@@ -4,7 +4,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 from flask import Flask, request, jsonify, render_template
-from models.calorie_models import train_model
+from models.calorie_model import train_model
 from models.obesity_model import train_obesity_model
 from models.dataset import calculate_bmi, map_activity_level
 

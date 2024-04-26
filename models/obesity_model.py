@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from .dataset import load_obesity_data
 
 def train_obesity_model():
-    obesity_data = load_obesity_data("/datasets/obesity_data.csv")
+    obesity_data = load_obesity_data("datasets/obesity_data.csv")
     label_encoder = LabelEncoder()
     obesity_data['Gender'] = label_encoder.fit_transform(obesity_data['Gender'])
     X = obesity_data[['BMI']]

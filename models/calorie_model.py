@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from .dataset import load_data
 
 def train_model():
-    data = load_data("/datasets/Dataset.csv")
+    data = load_data("datasets/Dataset.csv")
     label_encoder = LabelEncoder()
     data['Gender'] = label_encoder.fit_transform(data['gender'])
     X = data[['age', 'weight(kg)', 'height(m)', 'Gender']]
