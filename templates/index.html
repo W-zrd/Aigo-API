@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calorie Prediction</title>
+  </head>
+  <body>
+    <h1>Calorie Prediction</h1>
+    <form method="POST" action="/">
+      <label for="height">Height (cm):</label>
+      <input type="text" id="height" name="height" required /><br />
+
+      <label for="weight">Weight (kg):</label>
+      <input type="text" id="weight" name="weight" required /><br />
+
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" required /><br />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="M">Male</option>
+        <option value="F">Female</option></select
+      ><br />
+
+      <input type="submit" value="Predict" />
+    </form>
+  </body>
+</html>
