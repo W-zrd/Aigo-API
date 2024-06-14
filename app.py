@@ -1,4 +1,4 @@
-# app.py
+# file: app.py
 
 import warnings
 import pickle
@@ -54,4 +54,4 @@ def predict_obesity():
 
 # Run the Flask app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
