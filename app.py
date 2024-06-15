@@ -1,4 +1,4 @@
-# app.py
+# file: app.py
 
 import warnings
 import pickle
@@ -6,12 +6,17 @@ from flask import Flask, request, jsonify, render_template
 from models.calorie_model import train_model
 from models.obesity_model import train_obesity_model
 from models.dataset import calculate_bmi, map_activity_level
+from models.Execise import load_exercise_data, kg_to_lb, rekomendasi_aktivitas
 from datetime import datetime
 
 app = Flask(__name__)
 
 knn_calorie_model, calorie_label_encoder = train_model()
 knn_obesity_model, obesity_label_encoder = train_obesity_model()
+
+# Load exercise data
+exercise_data = load_exercise_data("datasets/exercise_dataset.csv")
+
 
 # Route for predicting calorie
 @app.route('/api/predict/calorie', methods=['POST'])
@@ -52,6 +57,19 @@ def predict_obesity():
 
     return jsonify({'predicted_category': predicted_pkl, 'bmi': bmi, 'activity_category': activity_category})
 
+# Route for predicting exercise
+@app.route('/api/predict/exercise', methods=['POST'])
+def predict_exerices():
+    data = request.json
+    weight = float(data['weight'])
+    calorie = float(data['calorie'])
+
+    recommendations = rekomendasi_aktivitas(exercise_data, calorie, weight)
+    
+    return jsonify(recommendations)
+
+    
+
 # Run the Flask app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
